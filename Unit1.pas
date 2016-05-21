@@ -42,7 +42,7 @@ var
    FileLength: Integer;
    I: Integer;
    FileName: string;
-   FileCount: Integer;
+   
 begin
      inherited;
      droph:=msg.Drop;
