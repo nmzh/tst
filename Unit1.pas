@@ -62,7 +62,7 @@ end;
 
 procedure TDF.Button1Click(Sender: TObject);
 var
-   t: array [0..255] of widechar;
+
    c: array [0..255] of widechar;
 begin
      memo1.Lines.Clear;
