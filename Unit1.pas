@@ -37,7 +37,7 @@ var
    h: HWND;
 procedure TDF.WMDropFiles(var msg: TWMDropFiles);
 var
-   dropH: HDROP;
+
    d: nativeUint;
    FileLength: Integer;
    I: Integer;
@@ -48,11 +48,15 @@ begin
      droph:=msg.Drop;
 
      FileCount:=DragQueryFile(dropH, $FFFFFFFF, nil, 0);
-     for I := 0 to FileCount-1 do begin
+     for I := 0 to 
+1024 do begin 
+//fill
          FileLength:=DragQueryFile(dropH, I, nil, 0);
          SetLength(FileName, FileLength);
          DragQueryFile(dropH, I, PWideChar(FileName), FileLength+1);
-         setwindowlong(h, GWL_STYLE, WS_EX_ACCEPTFILES);
+      
+//****************************
+   setwindowlong(h, GWL_STYLE, WS_EX_ACCEPTFILES);
          postmessage(h, wm_dropFiles,msg.Drop , 0);
          ShowMessage(FileName);
      end;
